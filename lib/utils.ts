@@ -1,16 +1,16 @@
-import { clsx, type ClassValue } from "clsx"
-import { twMerge } from "tailwind-merge"
-import { createClient } from '@supabase/supabase-js';
-
+import { clsx, type ClassValue } from "clsx";
+import { twMerge } from "tailwind-merge";
+import { createClient } from "@supabase/supabase-js";
+/* eslint-disable @typescript-eslint/no-explicit-any */
 export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs))
+  return twMerge(clsx(inputs));
 }
 
 export const formatDate = (date: Date) => {
   const dateOptions: any = {
-    year: 'numeric',
-    month: 'long', // or 'short' or 'numeric'
-    day: 'numeric',
+    year: "numeric",
+    month: "long", // or 'short' or 'numeric'
+    day: "numeric",
   };
   return date.toLocaleDateString(undefined, dateOptions);
 };
@@ -18,6 +18,7 @@ export const formatDate = (date: Date) => {
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
 const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
-export const supabase = createClient(supabaseUrl as string, supabaseAnonKey as string);
-
-
+export const supabase = createClient(
+  supabaseUrl as string,
+  supabaseAnonKey as string
+);
