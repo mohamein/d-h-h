@@ -1,9 +1,9 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import Card from "@/components/Card";
 import { FaArrowTrendUp } from "react-icons/fa6";
 import { IoPeople } from "react-icons/io5";
 import { IoMdHome } from "react-icons/io";
 import IncomeChart from "@/components/IncomeChart";
-import { Button } from "@/components/ui/button";
 import { PieChartComponent } from "@/components/PieChart";
 const Dashboard = () => {
   return (

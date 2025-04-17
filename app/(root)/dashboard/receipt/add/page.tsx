@@ -1,4 +1,5 @@
 "use client";
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from "react";
 import AddReceipt from "@/components/forms/add/AddReceipt";
 import { Card, CardHeader, CardTitle } from "@/components/ui/card";
