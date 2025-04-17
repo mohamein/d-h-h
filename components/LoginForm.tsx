@@ -1,5 +1,5 @@
 "use client";
-
+import { useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -7,34 +7,44 @@ import { Form } from "@/components/ui/form";
 
 import FormFields from "./FormFields";
 import { Button } from "./ui/button";
-import { formSchema } from "@/lib/validations";
+import { loginSchema } from "@/lib/validations";
 import { useRouter } from "next/navigation";
+import { loginUser } from "@/lib/actions/users.action";
 
 const LoginForm = () => {
   const router = useRouter();
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
+  const [loading, setLoading] = useState(false);
+  const form = useForm<z.infer<typeof loginSchema>>({
+    resolver: zodResolver(loginSchema),
     defaultValues: {
-      username: "",
+      email: "",
       password: "",
     },
   });
-  const onSubmit = () => {
-    console.log(form.getValues());
-    router.push("/dashboard");
-    // submit the form data here
-    // handle form submission logic
-    form.reset(); // clear the form after submission
+  const onSubmit = async (data: z.infer<typeof loginSchema>) => {
+    setLoading(true);
+    try {
+      const resp: any = await loginUser(data.email, data.password);
+
+      if (resp) {
+        router.push("/dashboard");
+        setLoading(false);
+        form.reset();
+      }
+    } catch (error) {
+      console.log("Error at login", error);
+      setLoading(false);
+    }
   };
 
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
         <FormFields
-          label="Username"
-          name="username"
-          placeholder="Enter your username."
-          type="text"
+          label="Email"
+          name="email"
+          placeholder="Enter your email."
+          type="email"
           control={form.control}
         />
         <FormFields
@@ -49,7 +59,20 @@ const LoginForm = () => {
           className="w-full bg-green-600 py-4 rounded-md  hover:bg-green-700 transition-all"
           type="submit"
         >
-          Submit
+          {loading ? (
+            <svg
+              className="animate-spin h-5 w-5 text-white mx-auto"
+              viewBox="3 3 18 18"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M12 3v2a9 9 0 1 1-9 9h2a7 7 0 1 0 7-7V3z"
+                fill="currentColor"
+              />
+            </svg>
+          ) : (
+            "Login"
+          )}
         </Button>
       </form>
     </Form>

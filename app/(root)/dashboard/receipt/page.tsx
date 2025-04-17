@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import ReceiptTable from "@/components/tables/ReceiptTable";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { getArdiyad } from "@/lib/actions/ardiyad.actions";
+import { getArdiyad } from "@/lib/actions/ardiyad.action";
 
 interface ReceiptData {
   id: number;

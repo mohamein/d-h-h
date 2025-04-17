@@ -8,6 +8,7 @@ import { useRouter } from "next/navigation";
 import { receiptSchema } from "@/lib/validations";
 import { Button } from "@/components/ui/button";
 import FormFields from "@/components/FormFields";
+import { createArdiyad } from "@/lib/actions/ardiyad.action";
 
 interface ReceiptTypeProps {
   receiptType: string;
@@ -21,39 +22,35 @@ const AddReceipt = ({ receiptType }: ReceiptTypeProps) => {
     defaultValues: {
       place: "",
       telephone: "",
-      receiptNumber: "",
-      date: "",
+      receipt_code: "",
+      receipt_number: "",
+      receipt_date: "",
       cabbirka: "",
       dhisan: "",
-      taxRef: "",
+      tax_ref: "",
       receivedFrom: "",
-      totalAmount: "",
-      amountInWords: "",
+      total_amount: "",
+      amount_in_words: "",
     },
   });
 
   const onSubmit = async (data: z.infer<typeof receiptSchema>) => {
-    // setLoading(true);
-    console.log(data);
-    // Here you can make an API call to save the receipt data
-
-    // try {
-    //   const response = await fetch("/api/receipt", {
-    //     method: "POST",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //     body: JSON.stringify(data),
-    //   });
-    //   if (!response.ok) {
-    //     throw new Error("Failed to add receipt");
-    //   }
-    //   router.push("/dashboard/receipt");
-    // } catch (error) {
-    //   console.error(error);
-    // } finally {
-    //   setLoading(false);
-    // }
+    setLoading(true);
+    const receipt_code = receiptType;
+    try {
+      const resp = await createArdiyad({
+        ...data,
+        receipt_code,
+      });
+      if (resp) {
+        setLoading(false);
+        router.push("/receipt");
+      } else {
+        setLoading(false);
+      }
+    } catch (error) {
+      console.error("Error adding receipt:", error);
+    }
   };
   return (
     <Form {...form}>

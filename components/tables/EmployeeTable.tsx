@@ -9,48 +9,86 @@ import {
   TableRow,
 } from "@/components/ui/table";
 
-const invoices = [
+const employees = [
   {
-    invoice: "INV001",
-    paymentStatus: "Paid",
-    totalAmount: "$250.00",
-    paymentMethod: "Credit Card",
+    id: 1,
+    name: "John Doe",
+    email: "johndoe@gmail.com",
+    role: "Admin",
+    status: "Active",
+    createdAt: "2024-01-01",
   },
   {
-    invoice: "INV002",
-    paymentStatus: "Pending",
-    totalAmount: "$150.00",
-    paymentMethod: "PayPal",
+    id: 2,
+    name: "John Doe",
+    email: "johndoe@gmail.com",
+    role: "Admin",
+    status: "Active",
+    createdAt: "2024-01-01",
   },
   {
-    invoice: "INV003",
-    paymentStatus: "Unpaid",
-    totalAmount: "$350.00",
-    paymentMethod: "Bank Transfer",
+    id: 3,
+    name: "John Doe",
+    email: "johndoe@gmail.com",
+    role: "Admin",
+    status: "Active",
+    createdAt: "2024-01-01",
   },
   {
-    invoice: "INV004",
-    paymentStatus: "Paid",
-    totalAmount: "$450.00",
-    paymentMethod: "Credit Card",
+    id: 4,
+    name: "John Doe",
+    email: "johndoe@gmail.com",
+    role: "Admin",
+    status: "Active",
+    createdAt: "2024-01-01",
   },
   {
-    invoice: "INV005",
-    paymentStatus: "Paid",
-    totalAmount: "$550.00",
-    paymentMethod: "PayPal",
+    id: 5,
+    name: "John Doe",
+    email: "johndoe@gmail.com",
+    role: "Admin",
+    status: "Active",
+    createdAt: "2024-01-01",
   },
   {
-    invoice: "INV006",
-    paymentStatus: "Pending",
-    totalAmount: "$200.00",
-    paymentMethod: "Bank Transfer",
+    id: 6,
+    name: "John Doe",
+    email: "johndoe@gmail.com",
+    role: "Admin",
+    status: "Active",
+    createdAt: "2024-01-01",
   },
   {
-    invoice: "INV007",
-    paymentStatus: "Unpaid",
-    totalAmount: "$300.00",
-    paymentMethod: "Credit Card",
+    id: 7,
+    name: "John Doe",
+    email: "johndoe@gmail.com",
+    role: "Admin",
+    status: "Active",
+    createdAt: "2024-01-01",
+  },
+  {
+    id: 8,
+    name: "John Doe",
+    email: "johndoe@gmail.com",
+    role: "Admin",
+    status: "Active",
+    createdAt: "2024-01-01",
+  },
+  {
+    id: 9,
+    name: "John Doe",
+    email: "johndoe@gmail.com",
+    role: "Admin",
+    status: "Active",
+    createdAt: "2024-01-01",
+  },
+  {
+    id: 10,
+    name: "John Doe",
+    email: "johndoe@gmail.com",
+    role: "Admin",
+    status: "Active",
+    createdAt: "2024-01-01",
   },
 ];
 
@@ -60,19 +98,21 @@ const EmployeeTable = () => {
       <TableCaption>A list of your recent invoices.</TableCaption>
       <TableHeader>
         <TableRow>
-          <TableHead className="w-[100px]">Invoice</TableHead>
-          <TableHead>Status</TableHead>
-          <TableHead>Method</TableHead>
-          <TableHead className="text-right">Amount</TableHead>
+          <TableHead>Name:</TableHead>
+          <TableHead>Email:</TableHead>
+          <TableHead>Role:</TableHead>
+          <TableHead>Status:</TableHead>
+          <TableHead>Date:</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>
-        {invoices.map((invoice) => (
-          <TableRow key={invoice.invoice}>
-            <TableCell className="font-medium">{invoice.invoice}</TableCell>
-            <TableCell>{invoice.paymentStatus}</TableCell>
-            <TableCell>{invoice.paymentMethod}</TableCell>
-            <TableCell className="text-right">{invoice.totalAmount}</TableCell>
+        {employees.map((employee) => (
+          <TableRow key={employee.id}>
+            <TableCell>{employee.name}</TableCell>
+            <TableCell>{employee.email}</TableCell>
+            <TableCell>{employee.role}</TableCell>
+            <TableCell>{employee.status}</TableCell>
+            <TableCell>{employee.createdAt}</TableCell>
           </TableRow>
         ))}
       </TableBody>

@@ -1,10 +1,12 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { FormControl, FormField, FormItem, FormLabel } from "./ui/form";
 import { Input } from "./ui/input";
 
 type FormFieldsProps = {
   label: string;
   placeholder?: string;
-  type: "text" | "password" | "number" | "date";
+  type: "text" | "password" | "number" | "date" | "email" | "select";
+  options?: { value: string; label: string }[];
   control: any;
   name: string;
   className?: string;

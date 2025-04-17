@@ -56,6 +56,11 @@ const Sidebar = () => {
                   currentPathname === "/dashboard/staff"
                     ? "bg-green-50  h-[50px] px-4 py-2 rounded-lg text-green-600 font-semibold text-base"
                     : "text-gray-700"
+                } ${
+                  currentPathname === "/dashboard/staff/add" ||
+                  currentPathname === "/dashboard/staff/edit/[id]"
+                    ? "bg-green-50  h-[50px] px-4 py-2 rounded-lg text-green-600 font-semibold text-base"
+                    : "text-gray-700"
                 } transition-all duration-500`}
               >
                 <IoPeople size={23} />
