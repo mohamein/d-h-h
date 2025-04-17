@@ -1,6 +1,5 @@
 import Header from "@/components/Header";
 import Sidebar from "@/components/Sidebar";
-import { Input } from "@/components/ui/input";
 import React from "react";
 
 const layout = ({ children }: { children: React.ReactNode }) => {

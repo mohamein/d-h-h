@@ -7,7 +7,6 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { formatDate } from "@/lib/utils";
 interface ReceiptTableProps {
   data: any[]; // Replace 'any' with the actual type of your data
 }

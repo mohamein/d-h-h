@@ -1,12 +1,7 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { supabase } from "@/lib/utils";
 import { User } from "@/types/index";
-import { AuthSession, WeakPassword } from "@supabase/supabase-js";
 
-interface LoginUser {
-  refresh_token: string;
-  access_token: string;
-  user: any; // Replace 'any' with the appropriate type for the user object if known
-}
 import { revalidatePath } from "next/cache";
 
 export const getUsers = async () => {

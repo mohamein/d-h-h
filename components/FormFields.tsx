@@ -9,7 +9,6 @@ type FormFieldsProps = {
   options?: { value: string; label: string }[];
   control: any;
   name: string;
-  className?: string;
 };
 const FormFields = ({
   label,
@@ -17,7 +16,6 @@ const FormFields = ({
   control,
   type,
   name,
-  className,
 }: FormFieldsProps) => {
   return (
     <>
