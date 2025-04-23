@@ -136,4 +136,7 @@
   body {
     @apply bg-background text-foreground;
   }
+  .print-body {
+    @apply bg-white text-black border border-gray-400 p-4 m-4;
+  }
 }
